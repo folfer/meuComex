@@ -215,6 +215,7 @@ const Exportation: React.FC = () => {
         </Description>
       </Header>
       <TableShell
+        route="export-details"
         searchExist={false}
         isPagination={true}
         dataInformation={dataInformation}

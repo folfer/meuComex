@@ -18,6 +18,8 @@ import Price from "./pages/Price";
 import NewImportation from "./pages/NewImportation";
 import Contributors from "./pages/Contributors";
 import NewExportation from "./pages/NewExportation";
+import importDetails from "./pages/ImportDetails";
+import ExportDetails from "./pages/ExportDetails";
 
 const PrivateRoute = ({ component, ...rest }: any) => {
   const routeComponent = (props: any) =>
@@ -51,6 +53,16 @@ const Routes: React.FC = () => {
       <PrivateRoute exact path="/exportation" component={Exportation} />
       <PrivateRoute exact path="/alerts" component={Alerts} />
       <PrivateRoute exact path="/new-importation" component={NewImportation} />
+      <PrivateRoute
+        exact
+        path="/import-details/:id"
+        component={importDetails}
+      />
+      <PrivateRoute
+        exact
+        path="/export-details/:id"
+        component={ExportDetails}
+      />
       <PrivateRoute exact path="/contributors" component={Contributors} />
       <PrivateRoute exact path="/new-exportation" component={NewExportation} />
       <Route exact path="/" component={Login} />

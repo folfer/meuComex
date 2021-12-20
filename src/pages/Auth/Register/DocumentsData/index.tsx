@@ -19,6 +19,7 @@ import {
 } from "./styles";
 import { MdFilePresent } from "react-icons/md";
 import { useAuth } from "../../../../hooks/useContext";
+import api from "../../../../services/api";
 
 interface Props {
   handleIncrement: () => void;
@@ -27,7 +28,7 @@ interface Props {
 const DocumentsData: React.FC<Props> = ({ handleIncrement }) => {
   const formRef = useRef<HTMLFormElement>(null);
 
-  const { setRegisterState, personalDataFunction } = useAuth();
+  const { setRegisterState, personalDataFunction, companyId } = useAuth();
 
   const [fileArray, setFileArray] = useState<any>([]);
   const [fileArrayTwo, setFileArrayTwo] = useState<any>([]);
@@ -63,6 +64,17 @@ const DocumentsData: React.FC<Props> = ({ handleIncrement }) => {
     }
   }, [fileArrayThird]);
 
+  const handleSendDocuments = () => {
+    api
+      .post(`/upload/uploadRegister/${companyId}`)
+      .then((response) => {
+        handleIncrement();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const validationFormUserSchema = Yup.object().shape({
     EmailForReceivingAlerts: Yup.string()
       .required("*Obrigatório")
@@ -91,133 +103,123 @@ const DocumentsData: React.FC<Props> = ({ handleIncrement }) => {
         Ufa, terminou. 🙏 Faça o upload dos documentos para finalizar o
         cadastro.
       </Description>
-      <FormShell clickFunction={handleIncrement}>
-        <Formik
-          validationSchema={validationFormUserSchema}
-          onSubmit={(e) => {
-            personalDataFunction(e);
-          }}
-          enableReinitialize
-          initialValues={{}}
-        >
-          {({ errors, values, touched, initialValues }) => (
-            <FormFormik ref={formRef}>
-              <Row>
-                <WrapperLabel>
-                  <WrapperTitles>
-                    <Title>Contrato Social</Title>
-                    <Subtitle>Última alteração</Subtitle>
-                  </WrapperTitles>
-                  {isAliveFile ? (
-                    <>
-                      <LabelForInput htmlFor="fusk">
-                        Clique aqui para
-                        <SearchText>procurar em seu computador</SearchText>
-                      </LabelForInput>
-                    </>
-                  ) : (
-                    <>
-                      <LabelForInput htmlFor="fusk">
-                        <MdFilePresent color="#3751FE" size={20} />
-                        {fileArray[0]?.name ? fileArray[0]?.name : ""}
-                        <SearchText>
-                          (
-                          {fileArray[0]?.size
-                            ? formatBytes(fileArray[0]?.size)
-                            : ""}
-                          )
-                        </SearchText>
-                      </LabelForInput>
-                    </>
-                  )}
-                  <InputFile
-                    onChange={(e) =>
-                      setFileArray(
-                        e.currentTarget.files ? e.currentTarget.files : []
+      handleSendDocuments(); handleSendDocuments();
+      <FormShell clickFunction={handleSendDocuments}>
+        <FormFormik>
+          <Row>
+            <WrapperLabel>
+              <WrapperTitles>
+                <Title>Contrato Social</Title>
+                <Subtitle>Última alteração</Subtitle>
+              </WrapperTitles>
+              {isAliveFile ? (
+                <>
+                  <LabelForInput htmlFor="fusk">
+                    Clique aqui para
+                    <SearchText>procurar em seu computador</SearchText>
+                  </LabelForInput>
+                </>
+              ) : (
+                <>
+                  <LabelForInput htmlFor="fusk">
+                    <MdFilePresent color="#3751FE" size={20} />
+                    {fileArray[0]?.name ? fileArray[0]?.name : ""}
+                    <SearchText>
+                      (
+                      {fileArray[0]?.size
+                        ? formatBytes(fileArray[0]?.size)
+                        : ""}
                       )
-                    }
-                    id="fusk"
-                    type="file"
-                    name="photo"
-                  />
-                </WrapperLabel>
-                <WrapperLabel>
-                  <Title>Documento do Sócio</Title>
-                  {isAliveFileTwo ? (
-                    <>
-                      <LabelForInput htmlFor="fuskTwo">
-                        Clique aqui para
-                        <SearchText>procurar em seu computador</SearchText>
-                      </LabelForInput>
-                    </>
-                  ) : (
-                    <>
-                      <LabelForInput htmlFor="fuskTwo">
-                        <MdFilePresent color="#3751FE" size={20} />
-                        {fileArrayTwo[0]?.name ? fileArrayTwo[0]?.name : ""}
-                        <SearchText>
-                          (
-                          {fileArrayTwo[0]?.size
-                            ? formatBytes(fileArrayTwo[0]?.size)
-                            : ""}
-                          )
-                        </SearchText>
-                      </LabelForInput>
-                    </>
-                  )}
-                  <InputFile
-                    onChange={(e) =>
-                      setFileArrayTwo(
-                        e.currentTarget.files ? e.currentTarget.files : []
+                    </SearchText>
+                  </LabelForInput>
+                </>
+              )}
+              <InputFile
+                onChange={(e) =>
+                  setFileArray(
+                    e.currentTarget.files ? e.currentTarget.files : []
+                  )
+                }
+                id="fusk"
+                type="file"
+                name="photo"
+              />
+            </WrapperLabel>
+            <WrapperLabel>
+              <Title>Documento do Sócio</Title>
+              {isAliveFileTwo ? (
+                <>
+                  <LabelForInput htmlFor="fuskTwo">
+                    Clique aqui para
+                    <SearchText>procurar em seu computador</SearchText>
+                  </LabelForInput>
+                </>
+              ) : (
+                <>
+                  <LabelForInput htmlFor="fuskTwo">
+                    <MdFilePresent color="#3751FE" size={20} />
+                    {fileArrayTwo[0]?.name ? fileArrayTwo[0]?.name : ""}
+                    <SearchText>
+                      (
+                      {fileArrayTwo[0]?.size
+                        ? formatBytes(fileArrayTwo[0]?.size)
+                        : ""}
                       )
-                    }
-                    id="fuskTwo"
-                    type="file"
-                    name="photo"
-                  />
-                </WrapperLabel>
-                <WrapperLabel>
-                  <WrapperTitles>
-                    <Title>Contrato MeuComex</Title>
-                    <Subtitle>Assinado</Subtitle>
-                  </WrapperTitles>
-                  {isAliveFileThird ? (
-                    <>
-                      <LabelForInput htmlFor="fuskThird">
-                        Clique aqui para
-                        <SearchText>procurar em seu computador</SearchText>
-                      </LabelForInput>
-                    </>
-                  ) : (
-                    <>
-                      <LabelForInput htmlFor="fuskThird">
-                        <MdFilePresent color="#3751FE" size={20} />
-                        {fileArrayThird[0]?.name ? fileArrayThird[0]?.name : ""}
-                        <SearchText>
-                          (
-                          {fileArrayThird[0]?.size
-                            ? formatBytes(fileArrayThird[0]?.size)
-                            : ""}
-                          )
-                        </SearchText>
-                      </LabelForInput>
-                    </>
-                  )}
-                  <InputFile
-                    onChange={(e) =>
-                      setFileArrayThird(
-                        e.currentTarget.files ? e.currentTarget.files : []
+                    </SearchText>
+                  </LabelForInput>
+                </>
+              )}
+              <InputFile
+                onChange={(e) =>
+                  setFileArrayTwo(
+                    e.currentTarget.files ? e.currentTarget.files : []
+                  )
+                }
+                id="fuskTwo"
+                type="file"
+                name="photo"
+              />
+            </WrapperLabel>
+            <WrapperLabel>
+              <WrapperTitles>
+                <Title>Contrato MeuComex</Title>
+                <Subtitle>Assinado</Subtitle>
+              </WrapperTitles>
+              {isAliveFileThird ? (
+                <>
+                  <LabelForInput htmlFor="fuskThird">
+                    Clique aqui para
+                    <SearchText>procurar em seu computador</SearchText>
+                  </LabelForInput>
+                </>
+              ) : (
+                <>
+                  <LabelForInput htmlFor="fuskThird">
+                    <MdFilePresent color="#3751FE" size={20} />
+                    {fileArrayThird[0]?.name ? fileArrayThird[0]?.name : ""}
+                    <SearchText>
+                      (
+                      {fileArrayThird[0]?.size
+                        ? formatBytes(fileArrayThird[0]?.size)
+                        : ""}
                       )
-                    }
-                    id="fuskThird"
-                    type="file"
-                    name="photo"
-                  />
-                </WrapperLabel>
-              </Row>
-            </FormFormik>
-          )}
-        </Formik>
+                    </SearchText>
+                  </LabelForInput>
+                </>
+              )}
+              <InputFile
+                onChange={(e) =>
+                  setFileArrayThird(
+                    e.currentTarget.files ? e.currentTarget.files : []
+                  )
+                }
+                id="fuskThird"
+                type="file"
+                name="photo"
+              />
+            </WrapperLabel>
+          </Row>
+        </FormFormik>
       </FormShell>
     </Container>
   );

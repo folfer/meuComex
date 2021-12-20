@@ -7,6 +7,16 @@ export const Container = styled(Carousel)`
 `;
 
 export const Image = styled.img`
-  width: 500px;
-  height: 500px
+  width: 200px;
+  height: 200px;
+
+  @media (min-width: 976px) {
+    width: 300px;
+    height: 300px;
+  }
+
+  @media (min-width: 1300px) {
+    width: 500px;
+    height: 500px;
+  }
 `;

@@ -1,8 +1,9 @@
 import React from "react";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
+import ProsefturImage from "../../assets/retangle.png";
 
-import { Container, ContentContainer, Title, Text } from "./styles";
+import { Container, ContentContainer, Title, Text, Image } from "./styles";
 
 const Proseftur: React.FC = () => {
   return (
@@ -17,7 +18,18 @@ const Proseftur: React.FC = () => {
           cras adipiscing velit eget. Diam eget faucibus fringilla turpis
           tristique lectus. Nunc scelerisque adipiscing cras non gravida semper.
         </Text>
-
+        <Text>
+          Cse pulvinar donec in commodo viverra neque egestas. Quis tincidunt
+          faucibus lacus feugiat cras adipiscing velit eget. Diam eget faucibus
+          fringilla turpis tristique lectus. Nunc scelerisque adipiscing cras
+          non gravida semper. Lorem ipsum dolor sit amet, consectetur adipiscing
+          elit. Scelerisque amet dui cursus semper. Venenatis suspendisse
+          pulvinar donec in commodo viverra neque egestas. Quis tincidunt
+          faucibus lacus feugiat cras adipiscing velit eget. Diam eget faucibus
+          fringilla turpis tristique lectus. Nunc scelerisque adipiscing cras
+          non gravida semper.{" "}
+        </Text>
+        <Image data-aos="fade-left" src={ProsefturImage} alt="Prosftur" />
         <Text>
           Cse pulvinar donec in commodo viverra neque egestas. Quis tincidunt
           faucibus lacus feugiat cras adipiscing velit eget. Diam eget faucibus

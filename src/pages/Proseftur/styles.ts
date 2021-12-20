@@ -36,3 +36,11 @@ export const Text = styled.div`
 
   margin-top: 56px;
 `;
+
+export const Image = styled.img`
+  width: 100%;
+
+  height: 300px;
+
+  margin-top: 60px;
+`;

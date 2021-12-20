@@ -128,7 +128,7 @@ export const Label = styled.p`
   color: rgba(43, 54, 116, 0.8);
 `;
 
-export const FormFormik = styled(Form)`
+export const FormFormik = styled.form`
   width: 100%;
 
   display: flex;

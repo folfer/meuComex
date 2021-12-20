@@ -36,6 +36,7 @@ const TableShell: React.FC<any> = ({
   dataInformation,
   searchExist,
   backgroundColorWrapper,
+  route,
 }) => {
   const history = useHistory();
 
@@ -126,7 +127,7 @@ const TableShell: React.FC<any> = ({
   ];
 
   const handleRedirect = (id: any) => {
-    history.push(`/importation/${id}`);
+    history.push(`/${route}/${id}`);
   };
 
   const paginationComponentOptions = {

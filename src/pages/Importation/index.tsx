@@ -215,6 +215,7 @@ const Importation: React.FC = () => {
         </Description>
       </Header>
       <TableShell
+        route="import-details"
         searchExist={false}
         isPagination={true}
         dataInformation={dataInformation}
