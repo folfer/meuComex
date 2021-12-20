@@ -1,0 +1,125 @@
+export const dataInformationExporters = [
+  {
+    id: 1,
+    identifier: "Razão Social",
+    contact: "Nome Completo",
+    country: "Costa Rica",
+    validity: "30/12/1654",
+  },
+  {
+    id: 2,
+    identifier: "Razão Social",
+    contact: "Nome Completo",
+    country: "Costa Rica",
+    validity: "30/12/1654",
+  },
+  {
+    id: 3,
+    identifier: "Razão Social",
+    contact: "Nome Completo",
+    country: "Costa Rica",
+    validity: "30/12/1654",
+  },
+  {
+    id: 4,
+    identifier: "Razão Social",
+    contact: "Nome Completo",
+    country: "Costa Rica",
+    validity: "30/12/1654",
+  },
+  {
+    id: 5,
+    identifier: "Razão Social",
+    contact: "Nome Completo",
+    country: "Costa Rica",
+    validity: "30/12/1654",
+  },
+  {
+    id: 6,
+    identifier: "Razão Social",
+    contact: "Nome Completo",
+    country: "Costa Rica",
+    validity: "30/12/1654",
+  },
+  {
+    id: 7,
+    identifier: "Razão Social",
+    contact: "Nome Completo",
+    country: "Costa Rica",
+    validity: "30/12/1654",
+  },
+  {
+    id: 8,
+    identifier: "Razão Social",
+    contact: "Nome Completo",
+    country: "Costa Rica",
+    validity: "30/12/1654",
+  },
+  {
+    id: 9,
+    identifier: "Razão Social",
+    contact: "Nome Completo",
+    country: "Costa Rica",
+    validity: "30/12/1654",
+  },
+  {
+    id: 10,
+    identifier: "Razão Social",
+    contact: "Nome Completo",
+    country: "Costa Rica",
+    validity: "30/12/1654",
+  },
+  {
+    id: 11,
+    identifier: "Razão Social",
+    contact: "Nome Completo",
+    country: "Costa Rica",
+    validity: "30/12/1654",
+  },
+  {
+    id: 12,
+    identifier: "Razão Social",
+    contact: "Nome Completo",
+    country: "Costa Rica",
+    validity: "30/12/1654",
+  },
+];
+
+export const dataInformationCommodity = [
+  {
+    id: 1,
+    identifier: "Maçã, pera e frescos",
+    company: "R$0.000,00",
+    estimated: "R$0.000,00",
+    type: "R$0.000,00",
+  },
+  {
+    id: 2,
+    identifier: "Maçã, pera e frescos",
+    company: "R$0.000,00",
+    estimated: "R$0.000,00",
+    type: "R$0.000,00",
+  },
+  {
+    id: 3,
+    identifier: "Maçã, pera e frescos",
+    company: "R$0.000,00",
+    estimated: "R$0.000,00",
+    type: "R$0.000,00",
+  },
+  {
+    id: 4,
+    identifier: "Maçã, pera e frescos",
+    company: "R$0.000,00",
+    estimated: "R$0.000,00",
+    type: "R$0.000,00",
+  },
+  {
+    id: 5,
+    identifier: "Maçã, pera e frescos",
+    company: "R$0.000,00",
+    estimated: "R$0.000,00",
+    type: "R$0.000,00",
+  }
+
+]
