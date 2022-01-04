@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import { useAuth } from "../../hooks/useContext";
-import HeaderIndex from "./HeaderIndex";
-import PersonalData from "./Identification";
-import attention from "../../assets/attention.png";
-import sucess from "../../assets/cool.png";
 
 import {
   Container,
   Header,
   ProgressBarContainer,
-  Routes,
   Title,
   WrapperContainer,
   WrapperFirstSectionHeader,
@@ -18,7 +12,6 @@ import {
   WrapperTitleHeader,
 } from "./styles";
 
-import { useLocation } from "react-router";
 import ProgressBarImportation from "./ProgressBar";
 import Identification from "./Identification";
 import ExchangeClosing from "./ExchangeClosing";
@@ -26,8 +19,6 @@ import ExpenditureCalculation from "./ExpenditureCalculation";
 import ShippingDetails from "./ShippingDetails";
 import Expenditure from "./Expenditure";
 import Exporter from "./Exporter";
-import ButtonMUI from "../../components/ButtonMUI";
-import { MdSearch } from "react-icons/md";
 import Commodity from "./Commodity";
 import Transport from "./Transport";
 import RadarRelease from "./RadarRelease";
@@ -35,30 +26,12 @@ import Closing from "./Closing";
 
 const NewImportation: React.FC = () => {
   const { setGlobalCount } = useAuth();
-  const history = useHistory();
   const [count, setCount] = useState(1);
   const [percent, setPercent] = useState(5);
-  const { oldPath, setOldPath } = useAuth();
-  const [isExpand, setIsExpand] = useState(false);
-
-  const location = useLocation();
-
-  const [isNewOperationModalOpen, setIsNewOperationModalOpen] = useState(true);
-
-  const [isSucessNewOperationModalOpen, setIsSucessNewOperationModalOpen] =
-    useState(false);
-
-  const [isFinishNewOperationModalOpen, setIsFinishNewOperationModalOpen] =
-    useState(false);
-
-  function handleOpenNewOperationModal() {
-    setIsNewOperationModalOpen(true);
-    setIsSucessNewOperationModalOpen(true);
-  }
 
   useEffect(() => {
     setGlobalCount(count);
-  }, [count]);
+  }, [count, setGlobalCount]);
 
   const handleIncrement = () => {
     setCount((count) => count + 1);
@@ -85,8 +58,6 @@ const NewImportation: React.FC = () => {
     }
   };
 
-  const handleOnClick = () => history.push("/");
-
   return (
     <Container>
       <Header>
@@ -94,9 +65,6 @@ const NewImportation: React.FC = () => {
           <WrapperFirstSectionHeader>
             <WrapperTitleHeader>
               <Title>Nova Operação</Title>
-              <Routes>{`${
-                oldPath ? oldPath.replace("/", "") : ""
-              } > ${location.pathname.replace("/", "")}`}</Routes>
             </WrapperTitleHeader>
           </WrapperFirstSectionHeader>
         </WrapperText>

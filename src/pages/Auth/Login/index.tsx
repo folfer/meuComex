@@ -264,7 +264,7 @@ const Login: React.FC = () => {
                 size={12}
               />
             ) : (
-              <>logar</>
+              <>Logar</>
             )}
           </Button>
           <ButtonRegister to="/register">Cadastro</ButtonRegister>

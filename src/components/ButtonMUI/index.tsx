@@ -1,8 +1,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 
-import { MdAdd } from "react-icons/md";
-
 import { Container, ButtonLink } from "./styles";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

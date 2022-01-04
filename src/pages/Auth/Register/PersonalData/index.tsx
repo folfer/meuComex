@@ -12,7 +12,6 @@ import {
   Row,
   FormFormik,
   WrapperInput,
-  OptionsInput,
   Title,
   WrapperInputTwoItens,
 } from "./styles";
@@ -29,7 +28,7 @@ const PersonalData: React.FC<Props> = ({ handleIncrement }) => {
 
   useEffect(() => {
     setRegisterState("Dados pessoais");
-  }, []);
+  }, [setRegisterState]);
 
   const validationFormUserSchema = Yup.object().shape({
     fullName: Yup.string().required("*Obrigatório"),

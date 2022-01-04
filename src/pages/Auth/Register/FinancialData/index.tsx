@@ -46,10 +46,6 @@ const FinancialData: React.FC<Props> = ({ handleIncrement }) => {
     }
   }, [isBranchAlive]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsBranchAlive((event.target as HTMLInputElement).value);
-  };
-
   const validationFormUserSchema = Yup.object().shape({
     registeredBanks: Yup.string().required("*Obrigatório"),
     PaymentOrReceiptRules: Yup.number().required("*Obrigatório"),

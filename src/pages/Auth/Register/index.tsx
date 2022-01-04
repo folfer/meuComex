@@ -33,7 +33,7 @@ const Register: React.FC = () => {
 
   useEffect(() => {
     setGlobalCount(count);
-  }, [count]);
+  }, [count, setGlobalCount]);
 
   const handleOnClick = () => history.push("/");
 
@@ -41,18 +41,24 @@ const Register: React.FC = () => {
     setCount((count) => count + 1);
     if (count === 1 || count <= 1) {
       setPercent("14");
-    } else if (count === 2) {
+    }
+    if (count === 2) {
       setPercent("28");
-    } else if (count === 3) {
+    }
+    if (count === 3) {
       setPercent("42");
       setIsSucessNewOperationModalOpen(false);
-    } else if (count === 4) {
+    }
+    if (count === 4) {
       setPercent("56");
-    } else if (count === 5) {
+    }
+    if (count === 5) {
       setPercent("70");
-    } else if (count === 6) {
+    }
+    if (count === 6) {
       setPercent("84");
-    } else if (count === 7) {
+    }
+    if (count === 7) {
       setPercent("100");
       setIsFinishNewOperationModalOpen(true);
     }

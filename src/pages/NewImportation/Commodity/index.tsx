@@ -5,10 +5,7 @@ import {
   MdRemoveRedEye,
   MdOutlineModeEditOutline,
   MdDeleteOutline,
-  MdOutlineSearch,
 } from "react-icons/md";
-import { Formik } from "formik";
-import * as Yup from "yup";
 
 import { RegisterNewCommodity } from "../RegisterNewCommodity";
 
@@ -36,8 +33,6 @@ import {
 } from "./styles";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useAuth } from "../../../hooks/useContext";
-import { Input } from "../../../components/Input";
-import { TextField } from "@mui/material";
 
 interface Props {
   handleIncrement: () => void;

@@ -40,10 +40,6 @@ const ExpenditureCalculation: React.FC<Props> = ({ handleIncrement }) => {
 
   const [isNewOperationModalOpen, setIsNewOperationModalOpen] = useState(false);
 
-  function handleOpenNewOperationModal() {
-    setIsNewOperationModalOpen(true);
-  }
-
   function handleCloseNewOperationModal() {
     setIsNewOperationModalOpen(false);
   }

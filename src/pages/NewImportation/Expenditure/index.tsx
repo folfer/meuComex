@@ -21,6 +21,8 @@ import {
   SearchText,
   InputFile,
   WrapperInputByTwo,
+  AddBranch,
+  AddBranchTwo,
 } from "./styles";
 
 import { useAuth } from "../../../hooks/useContext";
@@ -53,6 +55,32 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
 
   const [isAliveFile, setIsAliveFile] = useState<any>(false);
   const [isAliveFileTwo, setIsAliveFileTwo] = useState<any>(false);
+
+  const [showForm, setShowForm] = useState<boolean>(false);
+  const [isOtherCostOpen, setIsOtherCostOpen] = useState<boolean>(false);
+
+  const [showFormTwo, setShowFormTwo] = useState<boolean>(false);
+  const [isOtherCostOpenTwo, setIsOtherCostOpenTwo] = useState<boolean>(false);
+
+  useEffect(() => {
+    setRegisterState("Despesa");
+
+    if (isOtherCostOpen === true) {
+      setShowForm(true);
+    } else {
+      setShowForm(false);
+    }
+  }, [isOtherCostOpen, setIsOtherCostOpen]);
+
+  useEffect(() => {
+    setRegisterState("Despesa");
+
+    if (isOtherCostOpenTwo === true) {
+      setShowFormTwo(true);
+    } else {
+      setShowFormTwo(false);
+    }
+  }, [isOtherCostOpenTwo, setIsOtherCostOpenTwo]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsBranchAlive((event.target as HTMLInputElement).value);
@@ -110,7 +138,6 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
     storage: Yup.string().required("*Obrigatório"),
     dispatcher: Yup.string().required("*Obrigatório"),
     sda: Yup.string().required("*Obrigatório"),
-    divisionType: Yup.string().required("*Obrigatório"),
     iof: Yup.string().required("*Obrigatório"),
     afrmm: Yup.string().required("*Obrigatório"),
     ceMerchant: Yup.string().required("*Obrigatório"),
@@ -119,6 +146,8 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
     totalPis: Yup.string().required("*Obrigatório"),
     totalCofins: Yup.string().required("*Obrigatório"),
     totalIcms: Yup.string().required("*Obrigatório"),
+    otherCost: Yup.string(),
+    otherCostTwo: Yup.string(),
   });
 
   function formatBytes(bytes: any, decimals = 2) {
@@ -158,7 +187,6 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
           storage: "",
           dispatcher: "",
           sda: "",
-          divisionType: "",
           iof: "",
           afrmm: "",
           ceMerchant: "",
@@ -167,6 +195,8 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
           totalPis: "",
           totalCofins: "",
           totalIcms: "",
+          otherCost: "",
+          otherCostTwo: "",
         }}
       >
         {({ errors, values, touched, initialValues }) => (
@@ -209,8 +239,12 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
                     value={values.currencyOfOperation}
                     error={errors.currencyOfOperation}
                     touched={touched.currencyOfOperation}
-                    placeholder="Dólar"
-                  />
+                    type="select"
+                  >
+                    <OptionsInput value="1">Dólar</OptionsInput>
+                    <OptionsInput value="2">Euro</OptionsInput>
+                    <OptionsInput value="3">Real</OptionsInput>
+                  </Input>
                 </WrapperInput>
                 <WrapperInput>
                   <Input
@@ -272,8 +306,13 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
                     value={values.internationalCurrencyOfOperation}
                     error={errors.internationalCurrencyOfOperation}
                     touched={touched.internationalCurrencyOfOperation}
-                    placeholder="Dólar"
-                  />
+                    placeholder="Selecionar"
+                    type="select"
+                  >
+                    <OptionsInput value="1">Dólar</OptionsInput>
+                    <OptionsInput value="2">Euro</OptionsInput>
+                    <OptionsInput value="3">Real</OptionsInput>
+                  </Input>
                 </WrapperInput>
                 <WrapperInput>
                   <Input
@@ -285,38 +324,6 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
                     placeholder="R$ 0.000,00"
                   />
                 </WrapperInput>
-              </Row>
-              <Row>
-                <WrapperLabel>
-                  <FormControl component="fieldset">
-                    <FormLabel component="legend">
-                      Escolher a divisão por
-                    </FormLabel>
-                    <RadioGroup
-                      row
-                      aria-label="escolher a divisão por"
-                      name="row-radio-buttons-group"
-                      onChange={handleChangeTwo}
-                    >
-                      <FormControlLabel
-                        value="absoluteValue"
-                        control={
-                          <Radio
-                            checked={isBranchAliveTwo === "absoluteValue"}
-                          />
-                        }
-                        label="Valor Absoluto"
-                      />
-                      <FormControlLabel
-                        value="%VMLE"
-                        control={
-                          <Radio checked={isBranchAliveTwo === "%VMLE"} />
-                        }
-                        label="%VMLE"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </WrapperLabel>
               </Row>
               <Row>
                 <Title>Acréscimos</Title>
@@ -342,6 +349,29 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
                     placeholder="R$ 0.000,00"
                   />
                 </WrapperInput>
+                {!showForm ? (
+                  <WrapperInput>
+                    <AddBranchTwo onClick={() => setShowFormTwo(true)}>
+                      <AiOutlinePlus size={18} /> Adicionar nova despesa
+                    </AddBranchTwo>
+                  </WrapperInput>
+                ) : (
+                  <></>
+                )}
+                {showForm ? (
+                  <WrapperInput>
+                    <Input
+                      title="Outra despesa"
+                      name="otherCostTwo"
+                      value={values.otherCostTwo}
+                      error={errors.otherCostTwo}
+                      touched={touched.otherCostTwo}
+                      placeholder="R$0.000,00"
+                    />
+                  </WrapperInput>
+                ) : (
+                  <></>
+                )}
               </Row>
               <Row>
                 <WrapperInput>
@@ -361,8 +391,13 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
                     value={values.AdditionCurrencyOfOperation}
                     error={errors.AdditionCurrencyOfOperation}
                     touched={touched.AdditionCurrencyOfOperation}
-                    placeholder="Dólar"
-                  />
+                    placeholder="Selecionar"
+                    type="select"
+                  >
+                    <OptionsInput value="1">Dólar</OptionsInput>
+                    <OptionsInput value="2">Euro</OptionsInput>
+                    <OptionsInput value="3">Real</OptionsInput>
+                  </Input>
                 </WrapperInput>
                 <WrapperInput>
                   <Input
@@ -410,27 +445,29 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
                   />
                 </WrapperInput>
               </Row>
-              <Row>
-                <Title>Adicionar nova despesa (FAZER)</Title>
-              </Row>
-              <Row>
-                <WrapperInput>
+              {!showForm ? (
+                <Row>
+                  <AddBranch onClick={() => setShowForm(true)}>
+                    <AiOutlinePlus size={18} /> Adicionar nova despesa
+                  </AddBranch>
+                </Row>
+              ) : (
+                <></>
+              )}
+              {showForm ? (
+                <Row>
                   <Input
-                    title="Escolher a divisão por"
-                    name="divisionType"
-                    value={values.divisionType}
-                    error={errors.divisionType}
-                    touched={touched.divisionType}
-                    type="select"
-                  >
-                    <OptionsInput value="valor absoluto">
-                      Valor absoltuo
-                    </OptionsInput>
-                    <OptionsInput value="Euro">%VMLE</OptionsInput>
-                    <OptionsInput value="Binária">Binária</OptionsInput>
-                  </Input>
-                </WrapperInput>
-              </Row>
+                    title="Outra despesa"
+                    name="otherCost"
+                    value={values.otherCost}
+                    error={errors.otherCost}
+                    touched={touched.otherCost}
+                    placeholder="R$0.000,00"
+                  />
+                </Row>
+              ) : (
+                <></>
+              )}
               <Row>
                 <Title>Despesas Aduaneiras</Title>
               </Row>

@@ -75,15 +75,6 @@ const DocumentsData: React.FC<Props> = ({ handleIncrement }) => {
       });
   };
 
-  const validationFormUserSchema = Yup.object().shape({
-    EmailForReceivingAlerts: Yup.string()
-      .required("*Obrigatório")
-      .email("*E-mail inválido"),
-    registeredBanks: Yup.string().required("*Obrigatório"),
-    PaymentOrReceiptRules: Yup.string().required("*Obrigatório"),
-    bankingChannel: Yup.string().required("*Obrigatório"),
-  });
-
   function formatBytes(bytes: any, decimals = 2) {
     if (bytes === 0) return "0 Bytes";
 

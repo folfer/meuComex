@@ -22,6 +22,7 @@ const CardExchange: React.FC<Props> = ({ signal }) => {
   const [buttonColor, setButtonColor] = useState<string>("");
 
   const verifySignal = signal.charAt(0);
+
   useEffect(() => {
     if (verifySignal === "+") {
       setButtonBackgroundColor("#02863347");

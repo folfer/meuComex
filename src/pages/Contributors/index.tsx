@@ -2,24 +2,16 @@ import React, { useState } from "react";
 import { MdAdd } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 import ButtonMUI from "../../components/ButtonMUI";
-import FabButton from "../../components/FabButton";
-import TableShell from "../../components/TableShell";
+import TableShell from "./TableShell";
 import { useAuth } from "../../hooks/useContext";
-import { InformationButton } from "../Dashboard/styles";
 import { NewContributorsModal } from "./NewContributorsModal";
 
 import {
-  Border,
-  ClosedButton,
   Container,
-  Description,
   Header,
-  HeaderDescription,
   HelperText,
-  InfoButton,
   Routes,
   Title,
-  WrapperBody,
   WrapperFirstSectionHeader,
   WrapperHelperText,
   WrapperText,

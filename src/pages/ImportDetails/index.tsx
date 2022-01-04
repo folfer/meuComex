@@ -1,27 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
-import {
-  MdFilePresent,
-  MdOutlineErrorOutline,
-  MdOutlineFileDownload,
-  MdOutlineShoppingCart,
-  MdOutlineWarningAmber,
-} from "react-icons/md";
+import React, { useRef } from "react";
+import { MdOutlineErrorOutline, MdOutlineFileDownload } from "react-icons/md";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useLocation } from "react-router-dom";
 import ButtonMUI from "../../components/ButtonMUI";
 import { useAuth } from "../../hooks/useContext";
 import ProgressBarImportDetails from "./ProgressBar";
+import OperationSummary from "./OperationSummary";
+import Alert from "./Alert";
 import {
-  AlertText,
-  AlertTitle,
   Container,
-  ContainerValues,
   Header,
-  IconContainer,
   Item,
-  ItemShell,
-  ItemValue,
   ContentContainer,
   OperationFlag,
   ContentHeader,
@@ -29,8 +19,6 @@ import {
   ProgressBarContainer,
   Routes,
   Title,
-  Wrapper,
-  WrapperContainerValues,
   WrapperFirstSectionHeader,
   WrapperText,
   WrapperTitleHeader,
@@ -45,18 +33,12 @@ import {
   WrapperTaxes,
   WrapperScreen,
   ScreenText,
-  WrapperLabel,
-  SearchText,
-  LabelForInput,
-  InputFile,
   WrapperInputFile,
-  Box,
-  BoxHeader,
-  BoxTitle,
-  BoxStatus,
-  BoxText,
+  AlertsRow,
+  InputFileRow,
 } from "./styles";
 import { Input } from "../../components/Input";
+import InputFileComponent from "../../components/InputFileComponent";
 
 const ImportDetails: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -65,38 +47,6 @@ const ImportDetails: React.FC = () => {
   const { oldPath, setOldPath } = useAuth();
 
   const location = useLocation();
-
-  const [fileArray, setFileArray] = useState<any>([]);
-  const [fileArrayTwo, setFileArrayTwo] = useState<any>([]);
-  const [fileArrayThree, setFileArrayThree] = useState<any>([]);
-
-  const [isAliveFile, setIsAliveFile] = useState<any>(false);
-  const [isAliveFileTwo, setIsAliveFileTwo] = useState<any>(false);
-  const [isAliveFileThree, setIsAliveFileThree] = useState<any>(false);
-
-  useEffect(() => {
-    if (fileArray) {
-      setIsAliveFile(!isAliveFile);
-    } else {
-      setIsAliveFile(!isAliveFile);
-    }
-  }, [fileArray]);
-
-  useEffect(() => {
-    if (fileArrayTwo) {
-      setIsAliveFileTwo(!fileArrayTwo);
-    } else {
-      setIsAliveFileTwo(!fileArrayTwo);
-    }
-  }, [fileArrayTwo]);
-
-  useEffect(() => {
-    if (fileArrayThree) {
-      setIsAliveFileThree(!fileArrayThree);
-    } else {
-      setIsAliveFileThree(!fileArrayThree);
-    }
-  }, [fileArrayThree]);
 
   const validationFormUserSchema = Yup.object().shape({
     countryOfOrigin: Yup.string().required("*Obrigatório"),
@@ -109,24 +59,6 @@ const ImportDetails: React.FC = () => {
     cofins: Yup.string().required(""),
     icms: Yup.string().required(""),
   });
-
-  function formatBytes(bytes: any, decimals = 2) {
-    if (bytes === 0) return "0 Bytes";
-
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
-  }
-
-  const defineStatusColor: any = {
-    Liberada: "#028633",
-    Aguardando: "#FDD817",
-    Pendente: "#E01A1A",
-  };
 
   return (
     <Container>
@@ -178,40 +110,7 @@ const ImportDetails: React.FC = () => {
               <ProgressBarImportDetails percent={90} />
             </ProgressBarContainer>
             <ContentContainer>
-              <ContentHeader>
-                <ContentTitle>Resumo da Operação</ContentTitle>
-                <OperationFlag>
-                  <MdOutlineErrorOutline size={15} />
-                  Pendência Cambial
-                </OperationFlag>
-              </ContentHeader>
-              <WrapperContainerValues>
-                <ContainerValues>
-                  <Wrapper>
-                    <IconContainer>
-                      <MdOutlineShoppingCart size={20} />
-                    </IconContainer>
-                    <ItemShell>
-                      <Item>Número da operação</Item>
-                      <ItemValue>XY3595LAMB86</ItemValue>
-                    </ItemShell>
-                    <ItemShell>
-                      <Item>Nome da empresa</Item>
-                      <ItemValue>R$0.000,00</ItemValue>
-                    </ItemShell>
-                    <ItemShell>
-                      <Item>Número DI</Item>
-                      <ItemValue>00.000.000-00</ItemValue>
-                    </ItemShell>
-                    <ItemShell>
-                      <AlertTitle>
-                        <MdOutlineWarningAmber size={17} /> Alto risco de multa
-                      </AlertTitle>
-                      <AlertText>14 alertas em aberto</AlertText>
-                    </ItemShell>
-                  </Wrapper>
-                </ContainerValues>
-              </WrapperContainerValues>
+              <OperationSummary />
             </ContentContainer>
             <ContentContainer>
               <ContentHeader>
@@ -237,13 +136,15 @@ const ImportDetails: React.FC = () => {
                     touched={touched.Specification}
                     type="select"
                   >
-                    <OptionsInput value="Administrador">
+                    <OptionsInput value="Especificação 1">
                       Especificação 1
                     </OptionsInput>
-                    <OptionsInput value="Intermediário">
+                    <OptionsInput value="Especificação 2">
                       Especificação 2
                     </OptionsInput>
-                    <OptionsInput value="Básico">Especificação 3</OptionsInput>
+                    <OptionsInput value="Especificação 3">
+                      Especificação 3
+                    </OptionsInput>
                   </Input>
                 </WrapperInputByTwo>
               </Row>
@@ -343,46 +244,23 @@ const ImportDetails: React.FC = () => {
               <ContentHeader>
                 <ContentTitle>Alertas</ContentTitle>
               </ContentHeader>
-              <Row>
-                <Box>
-                  <BoxHeader>
-                    <BoxTitle>LI Antecipada</BoxTitle>
-                    <BoxStatus backgroundColor={defineStatusColor["Liberada"]}>
-                      Liberada
-                    </BoxStatus>
-                  </BoxHeader>
-                  <BoxText>
-                    Lorem ipsum dolor sit amet, set retium consectetur
-                    adipiscing elitemen tumed pretium dolor nulla a abitur
-                  </BoxText>
-                </Box>
-                <Box>
-                  <BoxHeader>
-                    <BoxTitle>Nota fiscal</BoxTitle>
-                    <BoxStatus backgroundColor={defineStatusColor["Pendente"]}>
-                      Pendente
-                    </BoxStatus>
-                  </BoxHeader>
-                  <BoxText>
-                    Lorem ipsum dolor sit amet, set retium consectetur
-                    adipiscing elitemen tumed pretium dolor nulla a abitur
-                  </BoxText>
-                </Box>
-                <Box>
-                  <BoxHeader>
-                    <BoxTitle>Fechamento operação</BoxTitle>
-                    <BoxStatus
-                      backgroundColor={defineStatusColor["Aguardando"]}
-                    >
-                      Aguardando
-                    </BoxStatus>
-                  </BoxHeader>
-                  <BoxText>
-                    Lorem ipsum dolor sit amet, set retium consectetur
-                    adipiscing elitemen tumed pretium dolor nulla a abitur
-                  </BoxText>
-                </Box>
-              </Row>
+              <AlertsRow>
+                <Alert
+                  title="Li Antecipada"
+                  status="Liberada"
+                  text="Lorem ipsum dolor sit amet, set retium consectetur adipiscing elitemen tumed pretium dolor nulla a abitur "
+                />
+                <Alert
+                  title="Nota fiscal"
+                  status="Pendente"
+                  text="Lorem ipsum dolor sit amet, set retium consectetur adipiscing elitemen tumed pretium dolor nulla a abitur "
+                />
+                <Alert
+                  title="Fechamento operação"
+                  status="Aguardando"
+                  text="Lorem ipsum dolor sit amet, set retium consectetur adipiscing elitemen tumed pretium dolor nulla a abitur "
+                />
+              </AlertsRow>
             </ContentContainer>
             <ContentContainer>
               <ContentHeader>
@@ -392,121 +270,29 @@ const ImportDetails: React.FC = () => {
                   Documentação incompleta
                 </OperationFlag>
               </ContentHeader>
-              <Row>
+              <InputFileRow>
                 <WrapperInputFile>
-                  <Item>Comprovantes de pagamento frete</Item>
-                  <WrapperLabel>
-                    {isAliveFile ? (
-                      <>
-                        <LabelForInput htmlFor="fusk">
-                          Clique aqui para
-                          <SearchText>procurar em seu computador</SearchText>
-                        </LabelForInput>
-                      </>
-                    ) : (
-                      <>
-                        <LabelForInput htmlFor="fusk">
-                          <MdFilePresent color="#3751FE" size={20} />
-                          {fileArray[0]?.name ? fileArray[0]?.name : ""}
-                          <SearchText>
-                            (
-                            {fileArray[0]?.size
-                              ? formatBytes(fileArray[0]?.size)
-                              : ""}
-                            )
-                          </SearchText>
-                        </LabelForInput>
-                      </>
-                    )}
-                    <InputFile
-                      onChange={(e) =>
-                        setFileArray(
-                          e.currentTarget.files ? e.currentTarget.files : []
-                        )
-                      }
-                      id="fusk"
-                      type="file"
-                      name="photo"
-                    />
-                  </WrapperLabel>
+                  <InputFileComponent
+                    title="Comprovantes de pagamento frete"
+                    htmlFor="fusk"
+                    id="fusk"
+                  />
                 </WrapperInputFile>
                 <WrapperInputFile>
-                  <Item>Contrato de Câmbio</Item>
-                  <WrapperLabel>
-                    {isAliveFileTwo ? (
-                      <>
-                        <LabelForInput htmlFor="fusk">
-                          Clique aqui para
-                          <SearchText>procurar em seu computador</SearchText>
-                        </LabelForInput>
-                      </>
-                    ) : (
-                      <>
-                        <LabelForInput htmlFor="fusk">
-                          <MdFilePresent color="#3751FE" size={20} />
-                          {fileArrayTwo[0]?.name ? fileArrayTwo[0]?.name : ""}
-                          <SearchText>
-                            (
-                            {fileArrayTwo[0]?.size
-                              ? formatBytes(fileArrayTwo[0]?.size)
-                              : ""}
-                            )
-                          </SearchText>
-                        </LabelForInput>
-                      </>
-                    )}
-                    <InputFile
-                      onChange={(e) =>
-                        setFileArrayTwo(
-                          e.currentTarget.files ? e.currentTarget.files : []
-                        )
-                      }
-                      id="fusk"
-                      type="file"
-                      name="photo"
-                    />
-                  </WrapperLabel>
+                  <InputFileComponent
+                    title="Contrato de Câmbio"
+                    htmlFor="fuskTwo"
+                    id="fuskTwo"
+                  />
                 </WrapperInputFile>
                 <WrapperInputFile>
-                  <Item>Comprovantes de pagamento frete</Item>
-                  <WrapperLabel>
-                    {isAliveFileThree ? (
-                      <>
-                        <LabelForInput htmlFor="fusk">
-                          Clique aqui para
-                          <SearchText>procurar em seu computador</SearchText>
-                        </LabelForInput>
-                      </>
-                    ) : (
-                      <>
-                        <LabelForInput htmlFor="fusk">
-                          <MdFilePresent color="#3751FE" size={20} />
-                          {isAliveFileThree[0]?.name
-                            ? isAliveFileThree[0]?.name
-                            : ""}
-                          <SearchText>
-                            (
-                            {isAliveFileThree[0]?.size
-                              ? formatBytes(isAliveFileThree[0]?.size)
-                              : ""}
-                            )
-                          </SearchText>
-                        </LabelForInput>
-                      </>
-                    )}
-                    <InputFile
-                      onChange={(e) =>
-                        setFileArrayThree(
-                          e.currentTarget.files ? e.currentTarget.files : []
-                        )
-                      }
-                      id="fusk"
-                      type="file"
-                      name="photo"
-                    />
-                  </WrapperLabel>
+                  <InputFileComponent
+                    title="Comprovantes de pagamento"
+                    htmlFor="fuskThree"
+                    id="fuskThree"
+                  />
                 </WrapperInputFile>
-              </Row>
+              </InputFileRow>
             </ContentContainer>
           </FormFormik>
         )}

@@ -19,13 +19,18 @@ import {
   LabelForInput,
   SearchText,
   InputFile,
+  OperationFlag,
 } from "./styles";
 import { AiOutlineCalendar, AiOutlinePlus } from "react-icons/ai";
 import { useAuth } from "../../../hooks/useContext";
 import { Input } from "../../../components/Input";
 import { maskCPF, maskDateBird, phoneMask } from "../../../utils/masks";
 import StatusBar from "./StatusBar";
-import { MdFilePresent, MdInfoOutline } from "react-icons/md";
+import {
+  MdFilePresent,
+  MdInfoOutline,
+  MdOutlineErrorOutline,
+} from "react-icons/md";
 import {
   FormControl,
   FormControlLabel,
@@ -57,7 +62,7 @@ const Closing: React.FC<Props> = ({ handleIncrement }) => {
   useEffect(() => {
     setIsNewExp("no");
     setAvaliation("no");
-    setRegisterState("Dados pessoais");
+    setRegisterState("Fechamento");
   }, []);
 
   useEffect(() => {
@@ -184,14 +189,10 @@ const Closing: React.FC<Props> = ({ handleIncrement }) => {
                   />
                 </WrapperInput>
                 <WrapperInput>
-                  <StatusBar
-                    color="#E01A1A"
-                    backgroundColor="#fadddd"
-                    borderColor="#E01A1A"
-                    text="Pendência cambial"
-                  >
-                    <MdInfoOutline color="#E01A1A" size={18} />
-                  </StatusBar>
+                  <OperationFlag>
+                    <MdOutlineErrorOutline size={15} />
+                    Pendência Cambial
+                  </OperationFlag>
                 </WrapperInput>
               </Row>
               <Row>

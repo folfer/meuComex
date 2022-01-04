@@ -22,6 +22,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  @media (max-width: 768px) {
+    padding-bottom: 150px;
+  }
 `;
 
 export const FormFormik = styled(Form)`
@@ -50,12 +54,6 @@ export const Title = styled.h1`
   font-size: 2rem;
 
   color: #2b3674;
-`;
-
-export const InfoButton = styled(MdInfoOutline)`
-  width: 20px;
-  height: 20px;
-  color: #3298f7;
 `;
 
 export const Border = styled.div`
@@ -100,14 +98,6 @@ export const WrapperBody = styled.div`
   justify-content: space-around;
 `;
 
-export const ClosedButton = styled.button`
-  width: 20px;
-  height: 20px;
-  color: #216db3;
-
-  background: none;
-`;
-
 export const WrapperText = styled.div`
   width: 100%;
 
@@ -143,25 +133,6 @@ export const Routes = styled.strong`
   color: rgba(55, 81, 254, 0.7);
 `;
 
-export const WrapperHelperText = styled.div`
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
-  margin-top: 16px;
-`;
-
-export const HelperText = styled.h2`
-  font-weight: 500;
-  font-size: 1.5rem;
-
-  color: #2b3674;
-
-  margin-right: 10px;
-`;
-
 export const WrapperFirstSectionHeader = styled.div`
   width: 100%;
 
@@ -172,7 +143,7 @@ export const WrapperFirstSectionHeader = styled.div`
 
 export const ProgressBarContainer = styled.div`
   width: 100%;
-  min-width: 700px;
+  min-width: 600px;
   max-width: 1200px;
 
   padding: 10px;
@@ -185,10 +156,6 @@ export const ProgressBarContainer = styled.div`
 
   box-shadow: 4px 7px 32px rgba(43, 54, 116, 0.25);
   border-radius: 12px;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
 `;
 
 export const ContentContainer = styled.div`
@@ -223,58 +190,6 @@ export const ContentTitle = styled.div`
   color: #2b3674;
 `;
 
-export const Box = styled.div`
-  padding: 25.5px 24.5px;
-
-  background: #ffffff;
-  border: 1px solid #dce3f2;
-  box-sizing: border-box;
-  border-radius: 8px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-export const BoxHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const BoxTitle = styled.h1`
-  font-weight: bold;
-  font-size: 1rem;
-  color: rgba(43, 54, 116, 0.8);
-`;
-
-interface BoxStatusProps {
-  backgroundColor: string;
-}
-
-export const BoxStatus = styled.div<BoxStatusProps>`
-  padding: 2px 25px;
-
-  color: #fff;
-  font-weight: 500;
-  font-size: 0.875rem;
-
-  background: ${({ backgroundColor }) => backgroundColor};
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 5px;
-`;
-
-export const BoxText = styled.h1`
-  font-weight: 400;
-  font-size: 0.875rem;
-
-  color: #2b3674b2;
-`;
-
 export const OperationFlag = styled.div`
   display: flex;
   justify-content: space-between;
@@ -289,95 +204,10 @@ export const OperationFlag = styled.div`
   border-radius: 30px;
 `;
 
-export const WrapperContainerValues = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-
-  margin-top: 15px;
-  margin-bottom: 1.625rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-export const ContainerValues = styled.div`
-  width: 100%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  gap: 0.8rem;
-
-  @media (max-width: 768px) {
-    align-items: center;
-  }
-`;
-
-export const Wrapper = styled.div`
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-export const ItemShell = styled.div`
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.8rem;
-
-  padding-right: 2rem;
-  border-right: 1px solid #3751fe1a;
-
-  &:last-child {
-    border: none;
-  }
-`;
-
-export const IconContainer = styled.div`
-  padding: 18px;
-  color: #3751fe;
-  background: rgba(55, 81, 254, 0.05);
-  border-radius: 60px;
-`;
-
 export const Item = styled.h1`
   font-size: 1rem;
   font-weight: 500;
   color: #2b367499;
-`;
-
-export const ItemValue = styled.h1`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #2b3674; ;
-`;
-
-export const AlertTitle = styled.h1`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 5px;
-  font-weight: 500;
-  font-size: 1rem;
-  color: rgba(224, 26, 26, 0.4);
-`;
-
-export const AlertText = styled.h1`
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: #e01a1a;
 `;
 
 export const Row = styled.div`
@@ -386,6 +216,30 @@ export const Row = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+`;
+
+export const AlertsRow = styled.div`
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+export const InputFileRow = styled.div`
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const WrapperRow = styled.div`
@@ -483,49 +337,10 @@ export const WrapperInputFile = styled.div`
   flex-direction: column;
 
   gap: 7px;
-`;
 
-export const WrapperLabel = styled.div`
-  width: 100%;
-
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-
-  margin-bottom: 20px;
-`;
-
-export const SearchText = styled.p`
-  font-weight: normal;
-  font-size: 0.75rem;
-  color: #3751fe;
-  text-decoration-line: underline;
-  margin-left: 5px;
-`;
-
-export const LabelForInput = styled.label`
-  font-weight: 500;
-  font-size: 0.75rem;
-
-  color: rgba(43, 54, 116, 0.8);
-  margin-bottom: 5px;
-
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: #fcfdff;
-
-  border: 1px dashed #dce3f2;
-
-  padding: 20px;
-`;
-
-export const InputFile = styled.input`
-  display: none;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const OptionsInput = styled.option`

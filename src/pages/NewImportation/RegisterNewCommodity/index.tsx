@@ -5,20 +5,7 @@ import ButtonMUI from "../../../components/ButtonMUI";
 import { Input } from "../../../components/Input";
 import FormShellCommodity from "./FormShellCommodity";
 
-import {
-  Container,
-  Description,
-  FormFormik,
-  IconContainer,
-  Image,
-  Label,
-  Row,
-  Title,
-  WrapperContainer,
-  WrapperInput,
-  WrapperTitle,
-  ModalReact,
-} from "./styles";
+import { Container, FormFormik, Row, WrapperInput, ModalReact } from "./styles";
 import { useAuth } from "../../../hooks/useContext";
 import { WrapperInputTwoItens } from "../Exporter/styles";
 
@@ -37,6 +24,10 @@ export function RegisterNewCommodity({
 }: RegisterNewCommodityProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const { setRegisterState } = useAuth();
+
+  useEffect(() => {
+    setRegisterState("Nova Mercadoria");
+  }, [setRegisterState]);
 
   const validationFormUserSchema = Yup.object().shape({
     descCommodity: Yup.string().required("*Obrigatório"),

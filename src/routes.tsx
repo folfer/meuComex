@@ -7,7 +7,6 @@ import Register from "./pages/Auth/Register/";
 import Dashboard from "./pages/Dashboard";
 import Importation from "./pages/Importation";
 import History from "./pages/History";
-import Form from "./pages/Form";
 
 import CommonStructurePage from "./pages/CommonStructurePage";
 import Exportation from "./pages/Exportation";
@@ -48,7 +47,6 @@ const Routes: React.FC = () => {
     <Switch>
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <PrivateRoute exact path="/importation" component={Importation} />
-      <PrivateRoute exact path="/form" component={Form} />
       <PrivateRoute exact path="/history" component={History} />
       <PrivateRoute exact path="/exportation" component={Exportation} />
       <PrivateRoute exact path="/alerts" component={Alerts} />

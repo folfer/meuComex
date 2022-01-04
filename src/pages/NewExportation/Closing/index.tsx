@@ -1,31 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import FormShell from "../FormShell";
-import { FieldArray, Formik, getIn } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 
 import {
   Container,
-  Description,
   Row,
   FormFormik,
-  WrapperInput,
   OptionsInput,
   Title,
-  WrapperInputTwoItens,
-  AddBranch,
-  WrapperPlus,
   WrapperLabel,
   WrapperInputFull,
   LabelForInput,
   SearchText,
   InputFile,
 } from "./styles";
-import { AiOutlineCalendar, AiOutlinePlus } from "react-icons/ai";
 import { useAuth } from "../../../hooks/useContext";
 import { Input } from "../../../components/Input";
-import { maskCPF, maskDateBird, phoneMask } from "../../../utils/masks";
-import StatusBar from "./StatusBar";
-import { MdFilePresent, MdInfoOutline } from "react-icons/md";
+import { MdFilePresent } from "react-icons/md";
 import {
   FormControl,
   FormControlLabel,
@@ -48,7 +40,7 @@ const Closing: React.FC<Props> = ({ handleIncrement }) => {
 
   const [avaliation, setAvaliation] = useState("no");
   const [isActiveAvaliation, setIsActiveAvaliation] = useState<boolean>(true);
-  const [isAliveFile, setIsAliveFile] = useState<any>(false);
+  const [isAliveFile, setIsAliveFile] = useState(false);
   const [fileArray, setFileArray] = useState<any>([]);
 
   const [isAliveFileTwo, setIsAliveFileTwo] = useState<any>(false);
@@ -64,23 +56,19 @@ const Closing: React.FC<Props> = ({ handleIncrement }) => {
     if (isNewExp === "Yes") {
       setIsActiveExp(!isActiveNewExp);
     } else {
-      setIsActiveExp(!isActiveNewExp);
+      setIsActiveExp(isActiveNewExp);
     }
   }, [isNewExp]);
 
   useEffect(() => {
-    if (fileArray) {
-      setIsAliveFile(!isAliveFile);
-    } else {
-      setIsAliveFile(!isAliveFile);
-    }
+    setIsAliveFile(!!fileArray);
   }, [fileArray]);
 
   useEffect(() => {
     if (fileArrayTwo) {
       setIsAliveFileTwo(!isAliveFileTwo);
     } else {
-      setIsAliveFileTwo(!isAliveFileTwo);
+      setIsAliveFileTwo(isAliveFileTwo);
     }
   }, [fileArrayTwo]);
 
@@ -88,7 +76,7 @@ const Closing: React.FC<Props> = ({ handleIncrement }) => {
     if (avaliation === "Yes") {
       setIsActiveAvaliation(!isActiveAvaliation);
     } else {
-      setIsActiveAvaliation(!isActiveAvaliation);
+      setIsActiveAvaliation(isActiveAvaliation);
     }
   }, [avaliation]);
 
@@ -255,7 +243,7 @@ const Closing: React.FC<Props> = ({ handleIncrement }) => {
                   ) : (
                     <>
                       <LabelForInput htmlFor="fuskTwo">
-                        <MdFilePresent color="#3751FE" size={20} />
+                        <MdFilePresent color="#464961" size={20} />
                         {fileArrayTwo[0]?.name ? fileArrayTwo[0]?.name : ""}
                         <SearchText>
                           (

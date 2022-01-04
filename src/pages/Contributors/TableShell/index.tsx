@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { MdDeleteOutline } from "react-icons/md";
-
 import DataTable from "react-data-table-component";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../../hooks/useContext";
@@ -50,18 +48,6 @@ const TableShell: React.FC<any> = ({ dataInformation, searchExist }) => {
         opacity: "100%",
       },
     },
-  };
-
-  const defineColor = {
-    Finalizado: "#028633",
-    Transporte: "#FDD817",
-    Atraso: "#E01A1A",
-  };
-
-  const defineFontColor = {
-    Transporte: "#474A5F",
-    Atraso: "#FFFFFF",
-    Finalizado: "#FFFFFF",
   };
 
   const columns = [

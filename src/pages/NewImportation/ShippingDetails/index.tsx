@@ -3,7 +3,7 @@ import FormShell from "../FormShell";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Input } from "../../../components/Input";
-import { maskCPF, maskDateBird, phoneMask } from "../../../utils/masks";
+import { maskDateBird } from "../../../utils/masks";
 
 import {
   Container,
@@ -12,11 +12,6 @@ import {
   WrapperInput,
   OptionsInput,
   WrapperInputTwoItens,
-  WrapperLabel,
-  LabelForInput,
-  SearchText,
-  InputFile,
-  Text,
   WrapperCheckBox,
   WrapperInputCheck,
   WrapperInputThreeItens,
@@ -27,7 +22,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import { AiOutlineCalendar } from "react-icons/ai";
-import { MdFilePresent } from "react-icons/md";
 
 interface Props {
   handleIncrement: () => void;
@@ -39,7 +33,7 @@ export const ShippingDetails: React.FC<Props> = ({ handleIncrement }) => {
 
   useEffect(() => {
     setRegisterState("Dados de embarque");
-  }, []);
+  }, [setRegisterState]);
 
   const validationFormUserSchema = Yup.object().shape({
     invoiceNumber: Yup.string().required("*Obrigatório"),

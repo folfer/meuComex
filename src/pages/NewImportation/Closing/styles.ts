@@ -143,6 +143,20 @@ export const WrapperInput = styled.div`
   }
 `;
 
+export const OperationFlag = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 10px 2px 8px;
+
+  color: #e01a1a;
+  font-weight: 700;
+
+  background: rgba(224, 26, 26, 0.15);
+  border-radius: 30px;
+`;
+
 export const WrapperInputFull = styled.div`
   width: 100%;
   display: flex;

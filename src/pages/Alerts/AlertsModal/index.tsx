@@ -40,14 +40,10 @@ export const AlertsModal: React.FC<AlertsModalProps> = ({
   onRequestClose,
 }) => {
   const formRef = useRef<HTMLFormElement>(null);
-  const { setRegisterState, personalDataFunction } = useAuth(); // Claramente está errado
-  //EERADDDOOOOOOOOOOOOOO
-
   const [isBranchAlive, setIsBranchAlive] = useState("no");
   const [value, setValue] = useState<number[]>([20, 37]);
   const [status, setStatus] = useState<string>("");
-
-  const [isStatusChecked, setIsStatusChecked] = useState(false);
+  const [type, setType] = useState<string>("");
 
   function valueText(value: number) {
     return `USD${value},00`;
@@ -77,9 +73,7 @@ export const AlertsModal: React.FC<AlertsModalProps> = ({
     >
       <Formik
         validationSchema={validationFormUserSchema}
-        onSubmit={(e) => {
-          personalDataFunction(e);
-        }}
+        onSubmit={(e) => {}}
         enableReinitialize
         initialValues={{
           operationNumber: "",
@@ -151,24 +145,54 @@ export const AlertsModal: React.FC<AlertsModalProps> = ({
                 <WrapperRow>
                   <Row>
                     <WrapperInput>
-                      <Option>Drawback</Option>
+                      <Option
+                        className={type === "DRAWBACK" ? "selected" : ""}
+                        onClick={() => setType("DRAWBACK")}
+                      >
+                        Drawback
+                      </Option>
                     </WrapperInput>
                     <WrapperInput>
-                      <Option>Câmbio</Option>
+                      <Option
+                        className={type === "CÂMBIO" ? "selected" : ""}
+                        onClick={() => setType("CÂMBIO")}
+                      >
+                        Câmbio
+                      </Option>
                     </WrapperInput>
                     <WrapperInput>
-                      <Option>Especial</Option>
+                      <Option
+                        className={type === "ESPECIAL" ? "selected" : ""}
+                        onClick={() => setType("ESPECIAL")}
+                      >
+                        Especial
+                      </Option>
                     </WrapperInput>
                   </Row>
                   <Row>
                     <WrapperInput>
-                      <Option>NCM</Option>
+                      <Option
+                        className={type === "NCM" ? "selected" : ""}
+                        onClick={() => setType("NCM")}
+                      >
+                        NCM
+                      </Option>
                     </WrapperInput>
                     <WrapperInput>
-                      <Option>Embarque</Option>
+                      <Option
+                        className={type === "EMBARQUE" ? "selected" : ""}
+                        onClick={() => setType("EMBARQUE")}
+                      >
+                        Embarque
+                      </Option>
                     </WrapperInput>
                     <WrapperInput>
-                      <Option>Documentos</Option>
+                      <Option
+                        className={type === "DOCUMENTOS" ? "selected" : ""}
+                        onClick={() => setType("DOCUMENTOS")}
+                      >
+                        Documentos
+                      </Option>
                     </WrapperInput>
                   </Row>
                 </WrapperRow>

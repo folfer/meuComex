@@ -16,6 +16,7 @@ import {
   LabelForInput,
   SearchText,
   InputFile,
+  OptionsInput,
 } from "./styles";
 import { useAuth } from "../../../hooks/useContext";
 import { dataInformationExporters } from "../../../utils/dataInformation";
@@ -419,13 +420,18 @@ const Exporter: React.FC<Props> = ({ handleIncrement }) => {
                     </WrapperInput>
                     <WrapperInput>
                       <Input
-                        title="Moeda da Operação"
+                        title="Moeda da operação"
                         name="currency"
                         value={values.currency}
                         error={errors.currency}
                         touched={touched.currency}
-                        placeholder=""
-                      />
+                        placeholder="Selecionar"
+                        type="select"
+                      >
+                        <OptionsInput value="1">Dólar</OptionsInput>
+                        <OptionsInput value="2">Euro</OptionsInput>
+                        <OptionsInput value="3">Real</OptionsInput>
+                      </Input>
                     </WrapperInput>
                     <WrapperInput>
                       <WrapperLabel>

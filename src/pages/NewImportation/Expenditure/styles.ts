@@ -33,9 +33,11 @@ export const Row = styled.div`
 
 export const Title = styled.h1`
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 1rem;
 
   color: rgba(43, 54, 116, 1);
+
+  margin-bottom: 10px;
 `;
 
 export const WrapperInput = styled.div`
@@ -69,6 +71,58 @@ export const WrapperInputByTwo = styled.div`
       appearance: none;
       background-color: #fff !important;
     }
+  }
+`;
+
+export const AddBranch = styled.button`
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px dashed #3751fe;
+  color: #3751fe;
+
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+
+  font-weight: bold;
+
+  background: #ebeeff;
+
+  transition: all 0.2s;
+
+  &:hover {
+    border: 2px solid #3751fe;
+    transform: scale(0.98);
+  }
+`;
+
+export const AddBranchTwo = styled.button`
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px dashed #3751fe;
+  color: #3751fe;
+
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: -3px;
+
+  font-weight: bold;
+
+  background: #ebeeff;
+
+  transition: all 0.2s;
+
+  &:hover {
+    border: 2px solid #3751fe;
+    transform: scale(0.98);
   }
 `;
 

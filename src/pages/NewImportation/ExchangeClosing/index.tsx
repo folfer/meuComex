@@ -39,18 +39,6 @@ export const ExchangeClosing: React.FC<Props> = ({ handleIncrement }) => {
   const [isIncompleteDataModalOpen, setIsIncompleteDataModalOpen] =
     useState(false);
 
-  function handleOpenNewOperationModal() {
-    setIsNewOperationModalOpen(true);
-  }
-
-  function handleOpenExchangeContractModal() {
-    setIsExchangeContractModalOpen(true);
-  }
-
-  function handleOpenIncompleteDataModalOpen() {
-    setIsIncompleteDataModalOpen(true);
-  }
-
   function handleCloseNewOperationModal() {
     setIsNewOperationModalOpen(false);
   }
@@ -68,10 +56,8 @@ export const ExchangeClosing: React.FC<Props> = ({ handleIncrement }) => {
   }, []);
 
   const [fileArray, setFileArray] = useState<any>([]);
-  const [fileArrayTwo, setFileArrayTwo] = useState<any>([]);
 
   const [isAliveFile, setIsAliveFile] = useState<any>(false);
-  const [isAliveFileTwo, setIsAliveFileTwo] = useState<any>(false);
 
   useEffect(() => {
     if (fileArray) {
@@ -80,14 +66,6 @@ export const ExchangeClosing: React.FC<Props> = ({ handleIncrement }) => {
       setIsAliveFile(!isAliveFile);
     }
   }, [fileArray]);
-
-  useEffect(() => {
-    if (fileArrayTwo) {
-      setIsAliveFileTwo(!isAliveFileTwo);
-    } else {
-      setIsAliveFileTwo(!isAliveFileTwo);
-    }
-  }, [fileArrayTwo]);
 
   const validationFormUserSchema = Yup.object().shape({
     contractNumber: Yup.string().required("*Obrigatório"),
@@ -234,42 +212,6 @@ export const ExchangeClosing: React.FC<Props> = ({ handleIncrement }) => {
               </Row>
               <Row>
                 <Text>Contrato de câmbio</Text>
-              </Row>
-              <Row>
-                <WrapperLabel>
-                  {isAliveFileTwo ? (
-                    <>
-                      <LabelForInput htmlFor="fuskTwo">
-                        Clique aqui para
-                        <SearchText>procurar em seu computador</SearchText>
-                      </LabelForInput>
-                    </>
-                  ) : (
-                    <>
-                      <LabelForInput htmlFor="fuskTwo">
-                        <MdFilePresent color="#3751FE" size={20} />
-                        {fileArrayTwo[0]?.name ? fileArrayTwo[0]?.name : ""}
-                        <SearchText>
-                          (
-                          {fileArrayTwo[0]?.size
-                            ? formatBytes(fileArrayTwo[0]?.size)
-                            : ""}
-                          )
-                        </SearchText>
-                      </LabelForInput>
-                    </>
-                  )}
-                  <InputFile
-                    onChange={(e) =>
-                      setFileArrayTwo(
-                        e.currentTarget.files ? e.currentTarget.files : []
-                      )
-                    }
-                    id="fuskTwo"
-                    type="file"
-                    name="photo"
-                  />
-                </WrapperLabel>
               </Row>
             </FormShell>
             <NewTransactionModal

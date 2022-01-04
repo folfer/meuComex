@@ -44,7 +44,7 @@ export const ChargerImg = styled.div`
 `;
 
 export const InputsContainer = styled.div`
-  width: 60rem;
+  width: 70rem;
   display: flex;
   flex-direction: column;
   align-items: center;

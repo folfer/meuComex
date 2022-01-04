@@ -6,6 +6,8 @@ export const Container = styled.div`
   height: 710px;
 
   background-color: #fff;
+  border-radius: 0.75rem;
+
   .react-modal-alerts {
     width: 100%;
     max-width: 534px;
@@ -118,7 +120,7 @@ export const Option = styled.button`
 
   background: rgba(55, 81, 254, 0.05);
 
-  border: 1px solid #3751fe;
+  border: 1px solid #c8cad6;
   border-radius: 8px;
   box-sizing: border-box;
 
@@ -126,13 +128,13 @@ export const Option = styled.button`
 
   font-size: 14px;
   font-weight: 500;
-  color: #3751fe;
+  color: #2b367499;
 
-  &:hover {
-    background: #3751fe;
-    color: #fff;
+  &:focus {
+    background: #3751fe0d !important;
+    border: 1px solid #3751fe !important;
+    color: #3751fe !important;
   }
-
 `;
 
 export const OptionSelect = styled.button`
@@ -159,7 +161,6 @@ export const OptionSelect = styled.button`
     color: #3751fe;
   }
 `;
-
 
 export const WrapperInputByTwo = styled.div`
   width: 48%;

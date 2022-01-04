@@ -33,9 +33,11 @@ export const Row = styled.div`
 
 export const Title = styled.h1`
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 1rem;
 
   color: rgba(43, 54, 116, 1);
+
+  margin-bottom: 10px;
 `;
 
 export const WrapperInput = styled.div`

@@ -39,7 +39,6 @@ const NewExportation: React.FC = () => {
   const [count, setCount] = useState(1);
   const [percent, setPercent] = useState(5);
   const { oldPath, setOldPath } = useAuth();
-  const [isExpand, setIsExpand] = useState(false);
 
   const location = useLocation();
 
@@ -47,14 +46,6 @@ const NewExportation: React.FC = () => {
 
   const [isSucessNewOperationModalOpen, setIsSucessNewOperationModalOpen] =
     useState(false);
-
-  const [isFinishNewOperationModalOpen, setIsFinishNewOperationModalOpen] =
-    useState(false);
-
-  function handleOpenNewOperationModal() {
-    setIsNewOperationModalOpen(true);
-    setIsSucessNewOperationModalOpen(true);
-  }
 
   useEffect(() => {
     setGlobalCount(count);

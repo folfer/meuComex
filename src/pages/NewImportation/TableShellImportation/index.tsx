@@ -3,13 +3,7 @@ import React, { useEffect, useState } from "react";
 import { MdSearch } from "react-icons/md";
 
 import DataTable from "react-data-table-component";
-import {
-  MdNavigateNext,
-  MdOutlineSell,
-  MdOutlineShoppingCart,
-} from "react-icons/md";
 import { useHistory } from "react-router-dom";
-import InformationButton from "../../../components/InformationButton";
 import { useAuth } from "../../../hooks/useContext";
 
 import {

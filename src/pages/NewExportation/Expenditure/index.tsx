@@ -110,7 +110,6 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
     storage: Yup.string().required("*Obrigatório"),
     dispatcher: Yup.string().required("*Obrigatório"),
     sda: Yup.string().required("*Obrigatório"),
-    divisionType: Yup.string().required("*Obrigatório"),
     iof: Yup.string().required("*Obrigatório"),
     afrmm: Yup.string().required("*Obrigatório"),
     ceMerchant: Yup.string().required("*Obrigatório"),
@@ -158,7 +157,6 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
           storage: "",
           dispatcher: "",
           sda: "",
-          divisionType: "",
           iof: "",
           afrmm: "",
           ceMerchant: "",
@@ -209,8 +207,13 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
                     value={values.currencyOfOperation}
                     error={errors.currencyOfOperation}
                     touched={touched.currencyOfOperation}
-                    placeholder="Dólar"
-                  />
+                    placeholder="Selecionar"
+                    type="select"
+                  >
+                    <OptionsInput value="1">Dólar</OptionsInput>
+                    <OptionsInput value="2">Euro</OptionsInput>
+                    <OptionsInput value="3">Real</OptionsInput>
+                  </Input>
                 </WrapperInput>
                 <WrapperInput>
                   <Input
@@ -272,8 +275,13 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
                     value={values.internationalCurrencyOfOperation}
                     error={errors.internationalCurrencyOfOperation}
                     touched={touched.internationalCurrencyOfOperation}
-                    placeholder="Dólar"
-                  />
+                    placeholder="Selecionar"
+                    type="select"
+                  >
+                    <OptionsInput value="1">Dólar</OptionsInput>
+                    <OptionsInput value="2">Euro</OptionsInput>
+                    <OptionsInput value="3">Real</OptionsInput>
+                  </Input>
                 </WrapperInput>
                 <WrapperInput>
                   <Input
@@ -285,38 +293,6 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
                     placeholder="R$ 0.000,00"
                   />
                 </WrapperInput>
-              </Row>
-              <Row>
-                <WrapperLabel>
-                  <FormControl component="fieldset">
-                    <FormLabel component="legend">
-                      Escolher a divisão por
-                    </FormLabel>
-                    <RadioGroup
-                      row
-                      aria-label="escolher a divisão por"
-                      name="row-radio-buttons-group"
-                      onChange={handleChangeTwo}
-                    >
-                      <FormControlLabel
-                        value="absoluteValue"
-                        control={
-                          <Radio
-                            checked={isBranchAliveTwo === "absoluteValue"}
-                          />
-                        }
-                        label="Valor Absoluto"
-                      />
-                      <FormControlLabel
-                        value="%VMLE"
-                        control={
-                          <Radio checked={isBranchAliveTwo === "%VMLE"} />
-                        }
-                        label="%VMLE"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </WrapperLabel>
               </Row>
               <Row>
                 <Title>Acréscimos</Title>
@@ -361,8 +337,13 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
                     value={values.AdditionCurrencyOfOperation}
                     error={errors.AdditionCurrencyOfOperation}
                     touched={touched.AdditionCurrencyOfOperation}
-                    placeholder="Dólar"
-                  />
+                    placeholder="Selecionar"
+                    type="select"
+                  >
+                    <OptionsInput value="1">Dólar</OptionsInput>
+                    <OptionsInput value="2">Euro</OptionsInput>
+                    <OptionsInput value="3">Real</OptionsInput>
+                  </Input>
                 </WrapperInput>
                 <WrapperInput>
                   <Input
@@ -412,24 +393,6 @@ export const Expenditure: React.FC<Props> = ({ handleIncrement }) => {
               </Row>
               <Row>
                 <Title>Adicionar nova despesa (FAZER)</Title>
-              </Row>
-              <Row>
-                <WrapperInput>
-                  <Input
-                    title="Escolher a divisão por"
-                    name="divisionType"
-                    value={values.divisionType}
-                    error={errors.divisionType}
-                    touched={touched.divisionType}
-                    type="select"
-                  >
-                    <OptionsInput value="valor absoluto">
-                      Valor absoltuo
-                    </OptionsInput>
-                    <OptionsInput value="Euro">%VMLE</OptionsInput>
-                    <OptionsInput value="Binária">Binária</OptionsInput>
-                  </Input>
-                </WrapperInput>
               </Row>
               <Row>
                 <Title>Despesas Aduaneiras</Title>

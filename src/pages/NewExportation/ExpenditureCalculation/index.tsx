@@ -21,6 +21,7 @@ import {
 } from "./styles";
 import { useAuth } from "../../../hooks/useContext";
 import { NewTransactionModal } from "../../../components/NewOperationModal";
+import { dataInformationExpenditure } from "../../../utils/dataInformation";
 
 interface Props {
   handleIncrement: () => void;
@@ -40,121 +41,9 @@ const ExpenditureCalculation: React.FC<Props> = ({ handleIncrement }) => {
 
   const [isNewOperationModalOpen, setIsNewOperationModalOpen] = useState(false);
 
-  function handleOpenNewOperationModal() {
-    setIsNewOperationModalOpen(true);
-  }
-
   function handleCloseNewOperationModal() {
     setIsNewOperationModalOpen(false);
   }
-
-  const dataInformation = [
-    {
-      id: 1,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 2,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 3,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 4,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 5,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 6,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 7,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 8,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 9,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 10,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 11,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 12,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 13,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 14,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-    {
-      id: 15,
-      identifier: "Maçãs, peras e marmelos frescos",
-      company: "R$0.000,00",
-      estimated: "R$70.00",
-      type: "R$0.000,00",
-    },
-  ];
 
   return (
     <Container>
@@ -205,7 +94,7 @@ const ExpenditureCalculation: React.FC<Props> = ({ handleIncrement }) => {
               <TableShell
                 searchExist={false}
                 isPagination={true}
-                dataInformation={dataInformation}
+                dataInformation={dataInformationExpenditure}
               />
               <NewTransactionModal
                 isOpen={isNewOperationModalOpen}
